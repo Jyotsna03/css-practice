@@ -1,0 +1,30 @@
+div.box1{
+    width: 400px;
+    height: 800;
+    padding: 50px;
+    margin: 20px;
+    border: 10px solid #8edcf6;
+    background-color: lightyellow;
+}
+
+button{
+    background-color: red; 
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    
+}
+button:hover {
+        background-color: aqua;
+        cursor: pointer;
+      }
+div.box4{
+    text-align: center;
+}

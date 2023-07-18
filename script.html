@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <label for="contentInput">Paragraph Content:</label>
+    <input type="text" id="contentInput">
+    <br>
+    <button id="showBtn" onclick="showContent()">SHOW</button>
+    <button id="hideBtn" onclick="hideContent()">HIDE</button>
+    <p id="content"></p>
+
+    <script>
+        function showContent() {
+            var input = document.getElementById("contentInput").value;
+            document.getElementById("content").textContent = input;
+            document.getElementById("content").style.display = "block";
+        }
+
+        function hideContent() {
+            document.getElementById("content").style.display = "none";
+        }
+    </script>
+</body>
+</html>

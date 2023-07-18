@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Open New Window</title>
+    <script>
+      function openNewWindow() {
+        // Open a new window with a named page
+        var windowName = "myWindow";
+        var url = "https://www.example.com";
+        var windowFeatures = "width=200px ,height=200px ,location=yes";
+
+        var newWindow = window.open(url, windowName, windowFeatures);
+
+        // Resize the created window
+        newWindow.resizeTo(400, 400);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="openNewWindow()">Open New Window</button>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multiple-Choice Quiz</title>
+    <script>
+      var totalMarks = 0;
+      var timer;
+
+      function startTimer(duration, display) {
+        var timer = duration,
+          minutes,
+          seconds;
+        setInterval(function () {
+          minutes = parseInt(timer / 60, 10);
+          seconds = parseInt(timer % 60, 10);
+
+          minutes = minutes < 10 ? "0" + minutes : minutes;
+          seconds = seconds < 10 ? "0" + seconds : seconds;
+
+          display.textContent = minutes + ":" + seconds;
+
+          if (--timer < 0) {
+            clearInterval(timer);
+            alert("Time's up!");
+            submitQuiz();
+          }
+        }, 1000);
+      }
+
+      function initializeTimer() {
+        var fiveMinutes = 5 * 60, // 5 minutes in seconds
+          display = document.querySelector("#timer");
+        startTimer(fiveMinutes, display);
+      }
+
+      function checkAnswer(questionNumber, selectedOption, correctAnswer) {
+        if (selectedOption === correctAnswer) {
+          totalMarks += 1;
+        } else {
+          var answerField = document.getElementById("answer-" + questionNumber);
+          answerField.value = correctAnswer;
+          alert("Incorrect answer! The correct answer is " + correctAnswer);
+        }
+      }
+
+      function submitQuiz() {
+        clearInterval(timer);
+        alert("Quiz submitted! Total marks scored: " + totalMarks);
+        // Here you can perform any additional actions, like showing a result page or saving the score.
+      }
+    </script>
+  </head>
+  <body onload="initializeTimer()">
+    <h1>Multiple-Choice Quiz</h1>
+    <form>
+      <h3>Question 1:</h3>
+
+      <p>What does HTML stand for</p>
+      <input
+        type="radio"
+        name="q1"
+        value="a"
+        onclick="checkAnswer(2, this.value, 'b')"
+      />a) Home Tool Markup Language <br />
+      <input
+        type="radio"
+        name="q1"
+        value="b"
+        onclick="checkAnswer(2, this.value, 'b')"
+      />b) HyperText Markup Language <br />
+      <input
+        type="radio"
+        name="q1"
+        value="c"
+        onclick="checkAnswer(2, this.value, 'b')"
+      />c) Hyperlinks and Markup Language<br />
+      <input type="text" id="answer-2" />
+
+      <h3>Question 2:</h3>
+      <p>Who is making the Web standards?</p>
+      <input
+        type="radio"
+        name="q2"
+        value="a"
+        onclick="checkAnswer(2, this.value, 'c')"
+      />a) Microsoft<br />
+      <input
+        type="radio"
+        name="q2"
+        value="b"
+        onclick="checkAnswer(2, this.value, 'c')"
+      />b) Google <br />
+      <input
+        type="radio"
+        name="q2"
+        value="c"
+        onclick="checkAnswer(2, this.value, 'c')"
+      />c) World Wide Web <br />
+      <input type="text" id="answer-2" />
+
+      <h3>Question 3:</h3>
+      <p>Choose the correct HTML element for the largest heading</p>
+      <input
+        type="radio"
+        name="q3"
+        value="a"
+        onclick="checkAnswer(3, this.value, 'b')"
+      />a) h1 <br />
+      <input
+        type="radio"
+        name="q3"
+        value="b"
+        onclick="checkAnswer(3, this.value, 'b')"
+      />b) head <br />
+      <input
+        type="radio"
+        name="q3"
+        value="c"
+        onclick="checkAnswer(3, this.value, 'b')"
+      />c) h6 <br />
+      <input type="text" id="answer-3" />
+
+      <h3>Question 4:</h3>
+      <p>What does CSS stand for?</p>
+      <input
+        type="radio"
+        name="q4"
+        value="a"
+        onclick="checkAnswer(4, this.value, 'b')"
+      />a) Colourful Style Sheets <br />
+      <input
+        type="radio"
+        name="q4"
+        value="b"
+        onclick="checkAnswer(4, this.value, 'b')"
+      />b) Cascading Style Sheets<br />
+      <input
+        type="radio"
+        name="q4"
+        value="c"
+        onclick="checkAnswer(4, this.value, 'b')"
+      />c) Computer Style Sheets <br />
+      <input type="text" id="answer-4" />
+
+      <h3>Question 5:</h3>
+      <p>Which property is used to change the background color?</p>
+      <input
+        type="radio"
+        name="q5"
+        value="a"
+        onclick="checkAnswer(5, this.value, 'a')"
+      />a) colour <br />
+      <input
+        type="radio"
+        name="q5"
+        value="b"
+        onclick="checkAnswer(5, this.value, 'a')"
+      />b) bgcolour<br />
+      <input
+        type="radio"
+        name="q5"
+        value="c"
+        onclick="checkAnswer(5, this.value, 'a')"
+      />c) background-color <br />
+      <input type="text" id="answer-5" />
+
+      <br /><br />
+      <input type="button" value="Submit" onclick="submitQuiz()" />
+    </form>
+
+    <br />
+    <br />
+    <p>Timer: <span id="timer"></span></p>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add and Remove Elements from Array</title>
+  </head>
+  <body>
+    <h2>Add and Remove Elements from Array</h2>
+
+    <button onclick="addElement()">Add Element</button>
+    <button onclick="removeElement()">Remove Element</button>
+
+    <ul id="arrayList">
+      <!-- The array elements will be dynamically added here -->
+    </ul>
+
+    <script>
+      // Initial array
+      var array = [];
+
+      function updateList() {
+        var listElement = document.getElementById("arrayList");
+        listElement.innerHTML = ""; // Clear the list
+
+        // Add array elements to the list
+        for (var i = 0; i < array.length; i++) {
+          var listItem = document.createElement("li");
+          listItem.textContent = array[i];
+          listElement.appendChild(listItem);
+        }
+      }
+
+      function addElement() {
+        var inputElement = prompt("Enter a value to add to the array:");
+        if (inputElement !== null) {
+          array.push(inputElement);
+          updateList();
+        }
+      }
+
+      function removeElement() {
+        if (array.length === 0) {
+          alert("The array is already empty!");
+        } else {
+          var removedElement = array.pop();
+          alert("Removed element: " + removedElement);
+          updateList();
+        }
+      }
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>JavaScript Validation</h2>
+
+    <form action="/action_page.php" method="post">
+      <input type="text" name="fname" required />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <p>
+      If you click submit, without filling out the text field, your browser will
+      display an error message.
+    </p>
+  </body>
+</html>
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>JavaScript Window</h2>
+
+    <p id="demo"></p>
+
+    <script>
+      document.getElementById("demo").innerHTML =
+        "Browser inner window width: " +
+        window.innerWidth +
+        "px<br>" +
+        "Browser inner window height: " +
+        window.innerHeight +
+        "px";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="element1"></p>
+    <p id="element2"></p>
+    <button onclick="merge()">Merge Arrays</button>
+    <p id="result"></p>
+    <p id="element3"></p>
+    <p id="element4"></p>
+    <button onclick="sort()">Sort Arrays</button>
+    <p id="result1"></p>
+  </body>
+  <script>
+    const result = document.getElementById("result");
+    const element1 = document.getElementById("element1");
+    const element2 = document.getElementById("element2");
+    //Arrays
+    let arr1 = [1, 2, 3];
+    let arr2 = [4, 5, 6];
+    element1.innerHTML = "arr1: [" + arr1 + "]";
+    element2.innerHTML = "arr2: [" + arr2 + "]";
+    function merge() {
+      //merging two arrays
+      let merged_arr = arr1.concat(arr2);
+      result.innerHTML = "Merged array: [" + merged_arr + "]";
+    }
+
+    const element3 = document.getElementById("element3");
+    const element4 = document.getElementById("element4");
+    const result1 = document.getElementById("result1");
+    let arr3 = [1, 2, 3, 7, 5, 3, 14];
+    let arr4 = [-1, 4, 5, 6, 14];
+    element3.innerHTML = "arr3: [" + arr3 + "]";
+    element4.innerHTML = "arr4: [" + arr4 + "]";
+    function sort() {
+      for (let i = 0; i < arr3.length; i++) {
+        for (let j = 0; j < arr4.length; j++) {
+          if (arr3[i] != arr4[j]) {
+            let sort_arr = arr3[i];
+            result1.innerHTML = "Sorted array: [" + sort_arr + "]";
+          }
+        }
+      }
+    }
+  </script>
+</html>

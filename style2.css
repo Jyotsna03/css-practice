@@ -1,0 +1,33 @@
+div > p {
+  color: rebeccapurple;
+}
+
+/* input:placeholder-shown {
+  color: white;
+  background-color: gray;
+}
+
+input:required {
+  border: 2px solid red;
+} */
+
+input:in-range {
+  border: 5px solid green;
+}
+
+button:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+button:active {
+  background-color: brown;
+  padding: 10px;
+}
+h1::first-line {
+  color: red;
+  font-size: 20px;
+  text-decoration: dashed;
+  background-color: pink;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
